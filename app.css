@@ -68,11 +68,11 @@ button:active {
   align-items: center;
 }
 
-#finished-projects {
+#completed-projects {
   border-color: #0044ff;
 }
 
-#finished-projects header {
+#completed-projects header {
   background: #0044ff;
 }
 
@@ -91,6 +91,7 @@ button:active {
   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.26);
   padding: 1rem;
   margin: 1rem;
+  background: white;
 }
 
 .projects li h2 {
@@ -98,7 +99,7 @@ button:active {
   margin: 0.5rem 0;
 }
 
-#finished-projects li h2 {
+#completed-projects li h2 {
   color: #0044ff;
 }
 
@@ -115,7 +116,7 @@ button:active {
   background: #ffe3ee;
 }
 
-#finished-projects .droppable {
+#completed-projects .droppable {
   background: #d6e1ff;
 }
 
