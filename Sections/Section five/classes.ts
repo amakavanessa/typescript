@@ -33,6 +33,7 @@ abstract class Department {
 
 class ElectDepartment extends Department {
   constructor(id: string) {
+    //note that what is inside the super are the params that were included in the constructor function of the class you are extending
     super(id, "Electronic");
   }
   describe(): void {
