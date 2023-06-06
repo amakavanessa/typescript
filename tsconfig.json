@@ -109,7 +109,8 @@
     "skipLibCheck": true /* Skip type checking all .d.ts files. */
   },
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "Sections"
     //use npm init to generate the tsconfig.json and tsc --watch to continously watch and compile all the ts files in the project
     //wildcards use *.dev.ts to exclude all files ending with .dev.ts in this directory
     // use **/*.dev.ts to exclude all files ending with .dev.ts in all directory in the project that is watched
