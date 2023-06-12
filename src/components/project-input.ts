@@ -1,14 +1,14 @@
 //lets say you used export default component, you can import it with any name you wish ie import Comp from "./base-component.js"; you dont need to put it inside a curlyy braces
 
-import { Component } from "./base-component.js";
+import { Component } from "./base-component";
 //you can also group imports and use it with dot notation or use it as the later
-import * as Validation from "../util/validation.js";
+import * as Validation from "../util/validation";
 
 // import { Validatable, validate } from "../util/validation.js";
 // import { autobind } from "../decorators/autobind.js";
 // you can also use alias to avoid name clashes
-import { autobind as AutoBinder } from "../decorators/autobind.js";
-import { projectState } from "../state/project-state.js";
+import { autobind as AutoBinder } from "../decorators/autobind";
+import { projectState } from "../state/project-state";
 
 // ProjectInput Class this handles the way the project entries are gotten from the form input,the submit button gets the validated userInput,
 export class ProjectInput extends Component<HTMLDivElement, HTMLFormElement> {

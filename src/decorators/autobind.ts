@@ -10,3 +10,5 @@ export function autobind(_: any, _2: string, descriptor: PropertyDescriptor) {
   };
   return adjDescriptor;
 }
+//webpack is a bundling tool, it helps reduce http request by bundling codes together,less imports required,  it optimizes the codes by minifying it.
+//it is also able to transform ts to js codes and bundle it

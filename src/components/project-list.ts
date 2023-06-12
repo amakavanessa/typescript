@@ -1,9 +1,9 @@
-import { Component } from "./base-component.js";
-import { Project, ProjectStatus } from "../models/project.js";
-import { DragTarget } from "../models/drag-drop.js";
-import { autobind } from "../decorators/autobind.js";
-import { projectState } from "../state/project-state.js";
-import { ProjectItem } from "./project-item.js";
+import { Component } from "./base-component";
+import { Project, ProjectStatus } from "../models/project";
+import { DragTarget } from "../models/drag-drop";
+import { autobind } from "../decorators/autobind";
+import { projectState } from "../state/project-state";
+import { ProjectItem } from "./project-item";
 
 // ProjectList Class this is responsible for displaying the lists of projects gotten from input
 export class ProjectList
