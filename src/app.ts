@@ -1,32 +1,44 @@
-import "reflect-metadata";
-//this is used for converting plain objects like json to class objects
-import { plainToInstance } from "class-transformer";
-import { validate } from "class-validator";
-import { Product } from "./product.model";
+import axios from "axios";
+import * as config from "../config.json";
+const GOOGLE_API_KEY = config.GOOGLE_API_KEY;
 
-const products = [
-  { title: "hair", price: "100" },
-  { title: "shoe", price: "50" },
-  { title: "top", price: "20" },
-  { title: "bag", price: "100" },
-  { title: "food", price: "70" },
-  { title: "laptop", price: "500" },
-  { title: "phone", price: "800" },
-  { title: "drum", price: "10" },
-  { title: "purse", price: "80" },
-];
+const script = document.createElement("script");
+script.src = `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_API_KEY}`;
+script.async = true;
+script.defer = true;
+document.head.appendChild(script);
 
-const newProd = new Product("", -50);
-validate(newProd).then((errors) => {
-  if (errors.length > 0) {
-    console.log("VALIDATION ERRORS!");
-    console.log(errors);
-  } else {
-    console.log(newProd.getInformation());
-  }
-});
+const form = document.querySelector("form")!;
+const addressInput = document.getElementById("address")! as HTMLInputElement;
 
-const loadedProducts = plainToInstance(Product, products);
-for (const prod of loadedProducts) {
-  console.log(prod.getInformation());
+type GoogleGeoCodingResponse = {
+  results: { geometry: { location: { lat: number; lng: number } } }[];
+  status: "OK" | "ZERO_RESULT";
+};
+function searchAdressHandler(event: Event) {
+  event.preventDefault();
+
+  const enteredAddress = addressInput.value;
+
+  axios
+    .get<GoogleGeoCodingResponse>(
+      `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURI(
+        enteredAddress
+      )}&key=${GOOGLE_API_KEY}`
+    )
+    .then((response) => {
+      if (response.data.status !== "OK") {
+        throw new Error("Could not fetch location!");
+      }
+      const coordinates = response.data.results[0].geometry.location;
+      const map = new google.maps.Map(document.getElementById("map"), {
+        center: coordinates,
+        zoom: 16,
+      });
+      new google.maps.Marker({ position: coordinates, map: map });
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
 }
+form.addEventListener("submit", searchAdressHandler);

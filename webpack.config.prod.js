@@ -1,4 +1,5 @@
 const path = require("path");
+
 // This cleans up the dist folder after the project is successfully built
 const CleanPlugin = require("clean-webpack-plugin");
 // //webpack is a bundling tool, it helps reduce http request by bundling codes together,less imports required,  it optimizes the codes by minifying it.
